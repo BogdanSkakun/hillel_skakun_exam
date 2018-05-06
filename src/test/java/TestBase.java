@@ -28,8 +28,8 @@ public abstract class TestBase {
         driver.manage().window().maximize();
 
         log("Navigating to Comments website");
-        String url = new Url.UrlBuilder("rabota.ua")
-                .withHttps(false)
+        String url = new Url.UrlBuilder("rabota.ua/украина")
+                .withHttps(true)
                 .build()
                 .getUrl();
         driver.get(url);

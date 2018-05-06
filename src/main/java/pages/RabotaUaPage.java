@@ -3,6 +3,7 @@ package pages;
 import enums.City;
 import implementation.ElementBase;
 import implementation.InputField;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,6 +29,7 @@ public class RabotaUaPage  extends PageBase{
         return new ElementBase(getElement("//div[@class='fd-text-center ft-f1']"));
     }
 
+
     public void searchJob(String jobVacancy, City city){
         log("Clear search field");
         searchField().clear();
@@ -39,7 +41,5 @@ public class RabotaUaPage  extends PageBase{
         cityField().setText(city.getCity());
         log("Press search button");
         searchButton().click();
-
-
     }
 }
