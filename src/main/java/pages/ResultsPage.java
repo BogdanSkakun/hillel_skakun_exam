@@ -20,9 +20,7 @@ public class ResultsPage extends PageBase {
     public ElementBase resultTable(){
         return new ElementBase(getElement("//table[@class='f-vacancylist-tablewrap']"));
     }
-    public ElementBase searchField(){
-        return new ElementBase(getElement("//input[@id='content_HorizontalContainer1_CityPickerWork_inpCity']"));
-    }
+
 
 
     public List<String> getVacancyList(){
@@ -37,7 +35,8 @@ public class ResultsPage extends PageBase {
 
     public void printVacancies(){
         log("Print results");
-        System.out.println("QA Automation vacancies in city; " + getElement("//input[@id='content_HorizontalContainer1_CityPickerWork_inpCity']").getAttribute("value"));
+        System.out.println("QA Automation vacancies in city; "
+                + getElement("//input[@id='content_HorizontalContainer1_CityPickerWork_inpCity']").getAttribute("value"));
         getVacancyList().forEach(System.out::println);
     }
 

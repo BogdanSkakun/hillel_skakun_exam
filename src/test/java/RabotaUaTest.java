@@ -28,6 +28,11 @@ public class RabotaUaTest extends  TestBase{
     public void searchQaAutomationVacancies(){
         rabotaUaPage.searchJob(jobvacancy, City.LVIV);
         resultsPage.printVacancies();
+        rabotaUaPage.searchJob(jobvacancy, City.KYIV);
+        resultsPage.printVacancies();
+        rabotaUaPage.searchJob(jobvacancy, City.DNIPRO);
+        resultsPage.printVacancies();
+
     }
 
 }

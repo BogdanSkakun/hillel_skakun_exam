@@ -1,5 +1,6 @@
 package implementation;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import interfaces.Input;
 
@@ -14,7 +15,7 @@ public class InputField extends  ElementBase implements Input {
     }
 
     @Override
-    public void addText(String text) {
+    public void sendKeys(Keys keys) {
 
     }
 
