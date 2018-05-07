@@ -1,4 +1,5 @@
 import enums.City;
+import enums.TimePeriod;
 import org.junit.Test;
 import pages.RabotaUaPage;
 import pages.ResultsPage;
@@ -31,14 +32,13 @@ public class RabotaUaTest extends  TestBase{
     @Test
     public void searchQaAutomationVacancies(){
         rabotaUaPage.searchJob(jobvacancy, City.LVIV);
+        resultsPage.setPublishedPeriod(TimePeriod.SEVEN_DAYS);
         resultsList = resultsPage.getResultList();
         rabotaUaPage.searchJob(jobvacancy, City.KYIV);
         resultsList.addAll( resultsPage.getResultList());
         rabotaUaPage.searchJob(jobvacancy, City.DNIPRO);
         resultsList.addAll( resultsPage.getResultList());
         resultsPage.printVacancy(resultsList);
-
-
     }
 
 }

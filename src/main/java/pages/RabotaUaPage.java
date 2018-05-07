@@ -1,6 +1,7 @@
 package pages;
 
 import enums.City;
+import enums.TimePeriod;
 import implementation.ElementBase;
 import implementation.InputField;
 import org.openqa.selenium.By;
@@ -30,6 +31,7 @@ public class RabotaUaPage  extends PageBase{
     }
 
 
+
     public void searchJob(String jobVacancy, City city){
         log("Clear search field");
         searchField().clear();
@@ -37,9 +39,12 @@ public class RabotaUaPage  extends PageBase{
         searchField().setText(jobVacancy);
         log("Clear city field");
         cityField().clear();
-        log("Enter city " + city.getCity());
-        cityField().setText(city.getCity());
+        log("Set city " + city.getCity());
+        cityField().click();
+        getElement("//a[text()='" + city.getCity() + "']").click();
         log("Press search button");
         searchButton().click();
     }
+
+
 }
