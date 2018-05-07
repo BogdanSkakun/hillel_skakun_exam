@@ -26,6 +26,7 @@ public class ElementBase implements Element, Getter {
         return this.element.getText();
     }
 
+
     @Override
     public boolean isDisplayed() {
         return this.element.isDisplayed();

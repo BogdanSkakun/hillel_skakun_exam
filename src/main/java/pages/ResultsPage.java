@@ -20,25 +20,36 @@ public class ResultsPage extends PageBase {
     public ElementBase resultTable(){
         return new ElementBase(getElement("//table[@class='f-vacancylist-tablewrap']"));
     }
+    public ElementBase tableBody(){
+        return new ElementBase(resultTable().getElement("//tbody"));
+    }
+    public List<ElementBase> resultVacancy(){
+        List<WebElement> webElementsVacancy = tableBody()
+                .getElements("//h3[@class='fd-beefy-gunso f-vacancylist-vacancytitle']");
+        return webElementsVacancy.stream().map(i -> new ElementBase(i)).limit(5).collect(Collectors.toList());
+    }
+    public List<ElementBase> resultCompany(){
+        List<WebElement> webElementsCompany = tableBody()
+                .getElements("//p[@class='f-vacancylist-companyname fd-merchant f-text-dark-bluegray']");
+       return webElementsCompany.stream().map(i -> new ElementBase(i)).limit(5).collect(Collectors.toList());
+    }
+    public void printVacancy(List<String> list){
+      log("Print results");
+      list.stream().forEach(System.out::println);
+    }
 
 
-
-    public List<String> getVacancyList(){
+    public List<String> getResultList(){
         List<String> result = new ArrayList<>();
-        List<WebElement> vacancyElements = resultTable().getElements("//h3[@class='fd-beefy-gunso f-vacancylist-vacancytitle']");
-        List<WebElement> companyElements = resultTable().getElements("//p[@class='f-vacancylist-companyname fd-merchant f-text-dark-bluegray']");
-       for(int i = 0; i < 5; i ++){
-            result.add("Vacancy: " + vacancyElements.get(i).getText() + ". Company: " + companyElements.get(i).getText());
+        result.add("QA Automation vacancies in city; "
+                + getElement("//input[@id='content_HorizontalContainer1_CityPickerWork_inpCity']").getAttribute("value"));
+       for(int i = 0; i < resultVacancy().size(); i ++){
+            result.add("Vacancy: " + resultVacancy().get(i).getText() + ". Company: " + resultCompany().get(i).getText());
        }
        return result;
     }
 
-    public void printVacancies(){
-        log("Print results");
-        System.out.println("QA Automation vacancies in city; "
-                + getElement("//input[@id='content_HorizontalContainer1_CityPickerWork_inpCity']").getAttribute("value"));
-        getVacancyList().forEach(System.out::println);
-    }
+
 
 
 }
